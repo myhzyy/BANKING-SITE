@@ -1,17 +1,17 @@
-'use strict';
+"use strict";
 
 ///////////////////////////////////////
 // Modal window
-const btnScrollTo = document.querySelector('.btn--scroll-to');
-const section1 = document.querySelector('#section--1');
-const modal = document.querySelector('.modal');
-const overlay = document.querySelector('.overlay');
-const btnCloseModal = document.querySelector('.btn--close-modal');
-const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
-const nav = document.querySelector('.nav');
-const tabs = document.querySelectorAll('.operations__tab');
-const tabsContainer = document.querySelector('.operations__tab-container');
-const tabsContent = document.querySelectorAll('.operations__content');
+const btnScrollTo = document.querySelector(".btn--scroll-to");
+const section1 = document.querySelector("#section--1");
+const modal = document.querySelector(".modal");
+const overlay = document.querySelector(".overlay");
+const btnCloseModal = document.querySelector(".btn--close-modal");
+const btnsOpenModal = document.querySelectorAll(".btn--show-modal");
+const nav = document.querySelector(".nav");
+const tabs = document.querySelectorAll(".operations__tab");
+const tabsContainer = document.querySelector(".operations__tab-container");
+const tabsContent = document.querySelectorAll(".operations__content");
 
 // const openModal = function (e) {
 //   e.preventDefault();
@@ -41,10 +41,10 @@ const tabsContent = document.querySelectorAll('.operations__content');
 ////////////////
 /// BUTTON SCROLLING
 
-btnScrollTo.addEventListener('click', function (e) {
+btnScrollTo.addEventListener("click", function (e) {
   const s1coord = section1.getBoundingClientRect();
 
-  section1.scrollIntoView({ behavior: 'smooth' });
+  section1.scrollIntoView({ behavior: "smooth" });
 });
 
 ////////////////////////////////
@@ -63,57 +63,57 @@ btnScrollTo.addEventListener('click', function (e) {
 // 1. add event listener to common parent element
 // 2. determine what element originated the event
 
-document.querySelector('.nav__links').addEventListener('click', function (e) {
+document.querySelector(".nav__links").addEventListener("click", function (e) {
   console.log(e.target);
 
   // matching strategy
-  if (e.target.classList.contains('nav__link')) {
+  if (e.target.classList.contains("nav__link")) {
     e.preventDefault();
 
-    const id = e.target.getAttribute('href');
+    const id = e.target.getAttribute("href");
     console.log(id);
-    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+    document.querySelector(id).scrollIntoView({ behavior: "smooth" });
   }
 });
 
 /// Tabbed component
 
-tabsContainer.addEventListener('click', function (e) {
-  const clicked = e.target.closest('.operations__tab');
+tabsContainer.addEventListener("click", function (e) {
+  const clicked = e.target.closest(".operations__tab");
 
   /// Guard clause
   if (!clicked) return;
 
   // Remove active class
-  tabsContent.forEach(c => c.classList.remove('operations__content--active'));
-  clicked.classList.add('operations__tab--active');
+  tabsContent.forEach((c) => c.classList.remove("operations__content--active"));
+  clicked.classList.add("operations__tab--active");
   // Activate tab
-  tabs.forEach(t => t.classList.remove('operations__tab--active'));
+  tabs.forEach((t) => t.classList.remove("operations__tab--active"));
 
   // Activate content area
   document
     .querySelector(`.operations__content--${clicked.dataset.tab}`)
-    .classList.add('operations__content--active');
+    .classList.add("operations__content--active");
 });
 
 /// Menu Fade Animation
 
 const handleHover = function (e) {
-  if (e.target.classList.contains('nav__link')) {
+  if (e.target.classList.contains("nav__link")) {
     const link = e.target;
-    const siblings = link.closest('.nav').querySelectorAll('.nav__link');
-    const logo = link.closest('.nav').querySelector('img');
+    const siblings = link.closest(".nav").querySelectorAll(".nav__link");
+    const logo = link.closest(".nav").querySelector("img");
 
-    siblings.forEach(el => {
+    siblings.forEach((el) => {
       if (el !== link) el.style.opacity = this;
     });
     logo.style.opacity = this;
   }
 };
 
-nav.addEventListener('mouseover', handleHover.bind(0.5));
+nav.addEventListener("mouseover", handleHover.bind(0.5));
 
-nav.addEventListener('mouseout', handleHover.bind(1));
+nav.addEventListener("mouseout", handleHover.bind(1));
 
 // // Sticky Navigation
 // const intialCoords = section1.getBoundingClientRect();
@@ -154,7 +154,7 @@ nav.addEventListener('mouseout', handleHover.bind(1));
 // const observer = new IntersectionObserver(obsCallback, obsOptions);
 // observer.observe(section1);
 
-const mainHeader = document.querySelector('.header');
+const mainHeader = document.querySelector(".header");
 
 const navHeight = nav.getBoundingClientRect();
 // console.log(navHeight);
@@ -162,27 +162,27 @@ const navHeight = nav.getBoundingClientRect();
 const stickyNav = function (entries) {
   const [entry] = entries;
 
-  if (!entry.isIntersecting) nav.classList.add('sticky');
-  else nav.classList.remove('sticky');
+  if (!entry.isIntersecting) nav.classList.add("sticky");
+  else nav.classList.remove("sticky");
 };
 
 const headerObserver = new IntersectionObserver(stickyNav, {
   root: null,
   threshold: 0,
-  rootMargin: '-90px',
+  rootMargin: "-90px",
 });
 
 headerObserver.observe(mainHeader);
 
 /// Reveal Sections
 
-const allSection = document.querySelectorAll('.section');
+const allSection = document.querySelectorAll(".section");
 
 const revealSection = function (entries, observer) {
   const [entry] = entries;
 
   if (!entry.isIntersecting) return;
-  entry.target.classList.remove('section--hidden');
+  entry.target.classList.remove("section--hidden");
   observer.unobserve(entry.target);
 };
 
@@ -197,7 +197,7 @@ allSection.forEach(function (section) {
 
 /// LAZY LOADING IMAGES
 
-const imgTarget = document.querySelectorAll('img[data-src]');
+const imgTarget = document.querySelectorAll("img[data-src]");
 console.log(imgTarget);
 
 const loadImg = function (entries, observer) {
@@ -208,8 +208,8 @@ const loadImg = function (entries, observer) {
   /// Replace src with data-src
   entry.target.src = entry.target.dataset.src;
 
-  entry.target.addEventListener('load', function () {
-    entry.target.classList.remove('lazy-img');
+  entry.target.addEventListener("load", function () {
+    entry.target.classList.remove("lazy-img");
   });
 
   observer.unobserve(entry.target);
@@ -218,19 +218,19 @@ const loadImg = function (entries, observer) {
 const imgObserver = new IntersectionObserver(loadImg, {
   root: null,
   threshold: 0,
-  rootMargin: '200px',
+  rootMargin: "200px",
 });
 
-imgTarget.forEach(img => imgObserver.observe(img));
+imgTarget.forEach((img) => imgObserver.observe(img));
 
 /// SLIDER
 
 const sliders = function () {
-  const slides = document.querySelectorAll('.slide');
+  const slides = document.querySelectorAll(".slide");
 
-  const btnLeft = document.querySelector('.slider__btn--left');
-  const btnRight = document.querySelector('.slider__btn--right');
-  const dotsContainer = document.querySelector('.dots');
+  const btnLeft = document.querySelector(".slider__btn--left");
+  const btnRight = document.querySelector(".slider__btn--right");
+  const dotsContainer = document.querySelector(".dots");
 
   let curSlide = 0;
   const maxSlide = slides.length;
@@ -240,7 +240,7 @@ const sliders = function () {
   const createDots = function () {
     slides.forEach(function (_, i) {
       dotsContainer.insertAdjacentHTML(
-        'beforeend',
+        "beforeend",
         `<button class="dots__dot" data-slide="${i}"></button>`
       );
     });
@@ -248,12 +248,12 @@ const sliders = function () {
 
   const activateDot = function (slide) {
     document
-      .querySelectorAll('.dots__dot')
-      .forEach(dot => dot.classList.remove('dots__dot--active'));
+      .querySelectorAll(".dots__dot")
+      .forEach((dot) => dot.classList.remove("dots__dot--active"));
 
     document
       .querySelector(`.dots__dot[data-slide="${slide}"]`)
-      .classList.add('dots__dot--active');
+      .classList.add("dots__dot--active");
   };
 
   /// This is added so that when we load the page, it has a white button highlighted
@@ -303,18 +303,18 @@ const sliders = function () {
   /// we want to create dots before we activate them
 
   /// event handler
-  btnRight.addEventListener('click', nextSlide);
-  btnLeft.addEventListener('click', prevSlide);
+  btnRight.addEventListener("click", nextSlide);
+  btnLeft.addEventListener("click", prevSlide);
 
-  document.addEventListener('keydown', function (e) {
+  document.addEventListener("keydown", function (e) {
     console.log(e);
 
-    if (e.key === 'ArrowLeft') prevSlide();
-    e.key === 'ArrowRight' && nextSlide();
+    if (e.key === "ArrowLeft") prevSlide();
+    e.key === "ArrowRight" && nextSlide();
   });
 
-  dotsContainer.addEventListener('click', function (e) {
-    if (e.target.classList.contains('dots__dot')) {
+  dotsContainer.addEventListener("click", function (e) {
+    if (e.target.classList.contains("dots__dot")) {
       const { slide } = e.target.dataset;
       goToSlide(slide);
       activateDot(slide);
@@ -335,25 +335,25 @@ console.log(document.head);
 console.log(document.body);
 /// just the body
 
-const allSections = document.querySelectorAll('.section');
+const allSections = document.querySelectorAll(".section");
 console.log(allSections);
 
-document.getElementById('section--1');
-const allButtons = document.getElementsByTagName('button');
+document.getElementById("section--1");
+const allButtons = document.getElementsByTagName("button");
 console.log(allButtons);
 /// elementByTag name returns a HTML collection of which updates in real time,
 /// unlike a Node list
 
-console.log(document.getElementsByClassName('btn'));
+console.log(document.getElementsByClassName("btn"));
 
 /// Creating and inserting elements
 
 // insertAdjacentHTML
 
-const header = document.querySelector('.header');
+const header = document.querySelector(".header");
 
-const message = document.createElement('div');
-message.classList.add('cookie-message');
+const message = document.createElement("div");
+message.classList.add("cookie-message");
 // message.textContent = 'We use cookies for improved functionality and analytics';
 message.innerHTML =
   'We use cookies for improved functionality and analytics. <button class="btn btn--close-cookie">Got it!</button';
@@ -368,8 +368,8 @@ header.append(message);
 /// Deleting an element
 
 document
-  .querySelector('.btn--close-cookie')
-  .addEventListener('click', function () {
+  .querySelector(".btn--close-cookie")
+  .addEventListener("click", function () {
     // message.remove();
     message.parentElement.removeChild(message);
   });
@@ -399,19 +399,6 @@ document
 // /// the 10 is based 10, we always used this unless we're doing binary
 
 // document.documentElement.style.setProperty('--color-primary', 'orangered');
-
-// /// attributes
-// const logo = document.querySelector('.nav__logo');
-// console.log(logo.alt);
-// console.log(logo.src);
-// console.log(logo.className);
-
-// /// Non-standard
-
-// console.log(logo.desinger);
-// /// if we add a property manually, it will not be able to read it as it is not
-// /// one of the defauls
-// console.log(logo.getAttribute('designer'));
 
 // /// Adding
 // logo.alt = 'Beautiful minimalist logo';
@@ -517,14 +504,14 @@ document
 //   true
 // );
 
-const h1 = document.querySelector('h1');
+const h1 = document.querySelector("h1");
 
 /// Going downwards; child
-console.log(h1.querySelectorAll('.highlight'));
+console.log(h1.querySelectorAll(".highlight"));
 console.log(h1.childNodes); /// shows all the children elements
 console.log(h1.children); /// works just for direct children
-h1.firstElementChild.style.color = 'white'; /// changes first elements color
-h1.lastElementChild.style.color = 'orangered'; /// changes last elements color
+h1.firstElementChild.style.color = "white"; /// changes first elements color
+h1.lastElementChild.style.color = "orangered"; /// changes last elements color
 
 /// gets the children of the h1 elements
 
@@ -555,8 +542,8 @@ console.log(h1.nextSibling);
 /// we then loop over these. and check if each one of them is different to the h1
 /// if it is different to the h1, then adding scale. 0.5
 
-document.addEventListener('DOMContentLoaded', function (e) {
-  console.log('HTML parsed and DOM tree built!', e);
+document.addEventListener("DOMContentLoaded", function (e) {
+  console.log("HTML parsed and DOM tree built!", e);
 });
 
 /// DOM CONTENT LOADED
@@ -565,6 +552,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
 /// as all the HTML previous is laoded first
 /// in which case, we do NOT need to do DOMContentLoaded
 
-window.addEventListener('load', function (e) {
-  console.log('Page fully loaded', e);
+window.addEventListener("load", function (e) {
+  console.log("Page fully loaded", e);
 });
