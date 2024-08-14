@@ -400,10 +400,6 @@ document
 
 // document.documentElement.style.setProperty('--color-primary', 'orangered');
 
-// /// Adding
-// logo.alt = 'Beautiful minimalist logo';
-// logo.setAttribute('company', 'Bankist');
-
 // console.log(logo.src);
 // console.log(logo.getAttribute('src'));
 // /// one gets the actual URL and one points to the file
