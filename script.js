@@ -536,12 +536,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
   console.log("HTML parsed and DOM tree built!", e);
 });
 
-/// DOM CONTENT LOADED
-
-/// script javascript is the last thing to load if it's placed at the bottom
-/// as all the HTML previous is laoded first
-/// in which case, we do NOT need to do DOMContentLoaded
-
 window.addEventListener("load", function (e) {
   console.log("Page fully loaded", e);
 });
