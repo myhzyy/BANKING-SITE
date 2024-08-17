@@ -515,12 +515,6 @@ h1.lastElementChild.style.color = "orangered"; /// changes last elements color
 console.log(h1.parentNode); /// shows h1 elements parent (node)
 console.log(h1.parentElement); /// shows h1 elements parent
 
-// h1.closest('.header').style.background = 'var(--gradient-secondary)';
-// /// finds the closest header to the h1 element (closest parent element)
-
-// h1.closest('h1').style.background = 'var(--gradient-primary)';
-/// we can directly change the element that is selected by adding the same element
-
 /// Going sideways: siblings
 console.log(h1.previousElementSibling);
 console.log(h1.nextElementSibling);
