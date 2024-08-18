@@ -436,24 +436,6 @@ document
 
 /// easy way
 
-// const h1 = document.querySelector('h1');
-
-// const alerth1 = function (e) {
-//   alert('addEventListener: Great! you are reading the heading :D');
-
-//   h1.removeEventListener('mouseenter', alerth1);
-// };
-
-// h1.addEventListener('mouseenter', alerth1);
-
-// settimeout(() => h1.removeEventListener('mouseenter', alerth1), 3000);
-
-/// can remove event anywhere in the code, settimeout shows this
-
-// h1.onmouseenter = function (e) {
-//   alert('onMouseEnter: Great! you are reading the heading :D');
-// };
-
 const h1 = document.querySelector("h1");
 
 /// Going downwards; child
