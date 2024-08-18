@@ -454,52 +454,6 @@ document
 //   alert('onMouseEnter: Great! you are reading the heading :D');
 // };
 
-/// RGB (255,255,255)
-// const randomInt = (min, max) =>
-//   Math.floor(Math.random() * (max - min + 1) + min);
-
-// console.log(randomInt(2, 6));
-
-/// const randomInt makes a random number between the 2 values we call it with
-/// min number, max number
-///   Math.random TIMES the number generated from max - min
-/// + 1 is because it's between then number, so we add it so the 6 can be gotten
-/// then + min to that
-
-// const randomColor = () =>
-//   `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
-
-// console.log(randomColor(0, 255));
-
-// /// randomColor = a string which is rbg, with 3 random numbers called between
-// /// 0 and 255
-
-// document.querySelector('.nav__link').addEventListener('click', function (e) {
-//   console.log('link');
-//   this.style.backgroundColor = randomColor();
-//   console.log('LINK', e.target, e.currentTarget);
-//   console.log(e.currentTarget === this);
-
-//   /// stop propagation
-//   // e.stopPropagation();
-// });
-
-// document.querySelector('.nav__links').addEventListener('click', function (e) {
-//   // console.log('link');
-//   this.style.backgroundColor = randomColor();
-//   console.log('CONTAINER', e.target, e.currentTarget);
-// });
-
-// document.querySelector('.nav').addEventListener(
-//   'click',
-//   function (e) {
-//     // console.log('link');
-//     this.style.backgroundColor = randomColor();
-//     console.log('NAV', e.target, e.currentTarget);
-//   },
-//   true
-// );
-
 const h1 = document.querySelector("h1");
 
 /// Going downwards; child
